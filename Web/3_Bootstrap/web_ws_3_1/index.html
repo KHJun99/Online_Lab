@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <style>
+      .my-total{
+        margin-top: 30px;
+      }
+      .my-navbar{
+        box-sizing: border-box;
+        border: 1px solid black;
+        background-color: black;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 10px;
+        width: 460px;
+      }
+      .navbar.bg-body-tertiary {
+        background-color: rgb(36, 35, 35) !important; /* 회색 배경 없애기 */
+      }
+
+      .nav-link.active {
+        color: white !important;
+      }
+
+      .my-disabled {
+        margin-top: 10px;
+        margin-left: 500px;
+        color: black;
+      }
+      .btn-primary{
+        background-color: green;
+        border: 0px; 
+        width: 400px;
+        margin-left: 450px; 
+      }
+      .page-link{
+        color: black;
+      }
+
+    </style>
+
+  </head>
+  <body>
+    <div class="my-total">
+
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      Sign in
+    </button>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">로그인</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+                <div class="card-body">
+                    <label for="email-input" class="form-label">Email address</label>
+                    <input type="email" class="form-control" id="email-input" placeholder="name@example.com">
+                    <label for="inputPassword5" class="form-label">Password</label>
+                    <input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock">
+                    <div id="passwordHelpBlock" class="form-text">
+                        비밀번호 구성은 8자리 이상, 영문 대소문자, 숫자, 특수문자를 사용하세요.
+                    </div>
+                </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+            <button type="button" class="btn btn-primary">로그인</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 네비게이션 바 -->
+    <div class="my-navbar"> 
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <img src="ssafy_logo.png" alt="" width="50" >
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">프로젝트 ▼ </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">그룹들 ▼ </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">활동 </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">마일스톤 </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">스니펫 </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <!-- Disabled -->
+    <div class="my-disabled">
+      <nav aria-label="...">
+        <ul class="pagination">
+          <li class="page-item disabled">
+            <a class="page-link">Prev</a>
+          </li>
+          <li class="page-item active">
+            <a class="page-link" href="#" aria-current="page">1</a>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item"><a class="page-link" href="#">4</a></li>
+          <li class="page-item">
+            <a class="page-link" href="#">Next</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  </body>
+</html>

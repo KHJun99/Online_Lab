@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+  /* 최상위 div의 손자 span 선택 (자식 선택자를 두 번 사용) */
+    div > div > span {
+      color: blue;
+      margin-left: 40px;
+    } 
+
+  /* div 안에 포함된 모든 p 선택 (자손 선택자) */
+    div p {
+      color: crimson;
+    }
+
+  </style>
+</head>
+<body>
+  <div>              <!-- 최상위 div -->
+  <p>자식</p>      <!--  div의 직계 자식 p -->
+  <div>            <!-- div의 직계 자식 div -->
+    <span>손자</span> <!-- div의 손자 span -->
+  </div>
+  <div>            <!-- div의 직계 자식 div -->
+    <p>자식</p>    <!-- div의 손자 p -->
+  </div>
+</div>
+
+</body>
+</html>
