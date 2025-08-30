@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <style>
+      html, body {
+        margin : 0;
+      }
+      .navbar{
+        position: sticky;
+        top: 0;
+        z-index: 1;
+      }
+      header{
+        display: flex;        
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        align-items: stretch;  /* 자식 높이를 헤더 높이에 맞춰 늘림 */
+      }
+      /* 카드가 flex 아이템으로 가로를 꽉 채우게 */
+      header .card{
+        flex: 1 1 auto;
+        width: 100%;
+        border: 0;
+        border-radius: 0;
+      }
+      
+      /* 이미지가 가로 100%, 세로는 원하는 만큼 + 꽉 채우기 */
+      header .card-img{
+        display: flex;        
+        width: 100%;
+        height: 60vh;          
+        object-fit: cover;     
+        border-radius: 0;
+      }
+
+      .card-title {
+        font-size: 100px;
+        margin-bottom: 0;
+      }
+
+      .img{
+        margin-left: 5px;
+        width: 32%;
+        height: 300px;
+      }
+
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-secondary">
+      <div class="container-fluid">
+        <img src="images/logo.png" style="width: 150px; height:50px;" alt="">
+        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Community</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Login</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <header>
+      <div class="card text-bg-dark">
+        <img src="images/header.jpg" class="card-img"  alt="...">
+        <div class="card-img-overlay d-flex flex-column justify-content-center align-items-center text-center">
+          <h5 class="card-title mb-0">Cinema <br> Community</h5>
+          <button type="button" class="btn btn-primary mt-5">Let's go</button>
+        </div>
+      </div>
+    </header>
+    <article>
+      <p style="text-align: center; font-weight:bolder; font-size:xx-large; margin-top: 50px;">Used Skill</p>
+      <div class="three-img">
+        <img src="images/web.png" class="img" alt="web">
+        <img src="images/html5.png" class="img" alt="html">
+        <img src="images/css3.png" class="img" alt="css">
+      </div>
+    </article>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  </body>
+</html>
