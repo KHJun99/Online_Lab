@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>신간 도서 목록</title>
+</head>
+<body>
+  <h1>주목할 만한 신간 도서 목록</h1>
+  {% if books %}
+    {% for b in books %}
+    <p>제목 : {{ b.title }}</p>
+    <p>저자 : {{ b.author }}</p>
+    <hr>
+    {% endfor %}
+  {% endif %}
+  
+</body>
+</html>
