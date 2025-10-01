@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>신규 차고 등록</h1>
+  <form action="{% url 'garages:create' %}" method="POST">
+    {% csrf_token %}
+    <label for="location">위치 :</label>
+    <input type="text" id="location" name="location" required><br>
+
+    <label for="capacity">주차 가능 차량 수 :</label>
+    <input type="number" id="capacity" name="capacity" min="0" step="1" required><br>
+
+    <label>주차 가능 여부</label><br />
+    <label for="is_parking_available_true">가능</label>
+    <input type="radio" id="is_parking_available_true" name="is_parking_available" value="True" required >
+
+    <label for="is_parking_available_false">불가능</label>
+    <input type="radio" id="is_parking_available_false" name="is_parking_available" value="False" required><br>
+
+    <label for="opening_time">여는 시간 :</label>
+    <input type="time" id="opening_time" name="opening_time"required><br>
+
+    <label for="closing_time">닫는 시간 :</label>
+    <input type="time" id="closing_time" name="closing_time"required><br>
+
+    <input type="submit" value="제출">
+  </form>
+{% endblock %}

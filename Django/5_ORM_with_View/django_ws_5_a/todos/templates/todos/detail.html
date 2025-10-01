@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>할 일 목록 상세 페이지</h1>
+  <hr>
+  <p>{{ todos.pk }}번 째 할 일</p>
+  <p> 할 일 : {{ todos.work }}</p>
+  <p> 내 용 : {{ todos.content }}</p>
+  <p> 일 자 : {{ todos.created_at }}</p>
+  <p> 완 료 : {{ todos.is_completed }}</p>
+{% endblock content %}

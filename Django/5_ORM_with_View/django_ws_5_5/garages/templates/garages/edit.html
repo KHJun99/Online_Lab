@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>차고 정보 수정</h1>
+
+<form action="{% url 'garages:update' garage.pk %}" method="POST">
+  {% csrf_token %}
+
+  <label for="location">위치 : </label>
+  <input type="text" name="location" id="location" value="{{ garage.location }}"><br>
+
+  <label for="capacity">주차 가능 차량 수 : </label>
+  <input type="number" name="capacity" id="capacity" value="{{ garage.capacity }}"><br>
+
+  <p>주차 가능 여부</p>
+  <label>
+    <input type="radio" name="is_parking_available" value="True"
+           {% if garage.is_parking_available %}checked{% endif %}> 가능
+  </label>
+  <label>
+    <input type="radio" name="is_parking_available" value="False"
+           {% if not garage.is_parking_available %}checked{% endif %}> 불가능
+  </label><br>
+
+  <label for="opening_time">여는 시간 : </label>
+  <input type="time" name="opening_time" id="opening_time"><br>
+
+  <label for="closing_time">닫는 시간 : </label>
+  <input type="time" name="closing_time" id="closing_time"><br>
+
+  <input type="submit" value="제출">
+</form>
+{% endblock content %}
