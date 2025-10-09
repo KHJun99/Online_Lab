@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1 class="display-4 mb-4">메뉴 생성 페이지</h1>
+
+  <form method="post" novalidate>
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+
+    <div class="form-group">
+      <label for="{{ form.name.id_for_label }}">Name:</label>
+      {{ form.name }}
+      <div class="text-danger small">{{ form.name.errors }}</div>
+    </div>
+
+    <div class="form-group">
+      <label for="{{ form.price.id_for_label }}">Price:</label>
+      {{ form.price }}
+      <div class="text-danger small">{{ form.price.errors }}</div>
+    </div>
+
+    <div class="form-group">
+      <label for="{{ form.description.id_for_label }}">Description:</label>
+      {{ form.description }}
+      <div class="text-danger small">{{ form.description.errors }}</div>
+    </div>
+
+    <!-- 라벨 뒤에 라디오 버튼이 오도록 수동 렌더링 -->
+    <div class="form-group">
+      <label class="d-block">Is vegan:</label>
+      {% for radio in form.is_vegan %}
+        <div class="form-check">
+          {{ radio.tag }}
+          <label class="form-check-label" for="{{ radio.id_for_label }}">
+            {{ radio.choice_label }}
+          </label>
+        </div>
+      {% endfor %}
+      <div class="text-danger small">{{ form.is_vegan.errors }}</div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">CREATE</button>
+  </form>
+
+  <a href="{% url 'menus:index' %}" class="d-inline-block mt-3">[BACK]</a>
+{% endblock content %}

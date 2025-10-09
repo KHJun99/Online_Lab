@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>CREATE</h1>
+  <form action="{% url "travels:create" %}" method="POST">
+    {% csrf_token %}
+    {{ form }}
+    <br>
+    <input type="submit" value="제출">
+  </form>
+  <br>
+  <a href="{% url "travels:index" %}">[BACK]</a>
+{% endblock %}

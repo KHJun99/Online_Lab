@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Memos</h1>
+<a href="{% url 'memos:new' %}">메모하기</a>
+<ul>
+  {% for memo in memos %}
+    <li>
+      <a href="{% url 'memos:detail' memo.pk %}">{{ memo.summary }}</a>
+      <div>{{ memo.created_at }}</div>
+    </li>
+  {% empty %}
+    <li>작성된 메모가 없습니다.</li>
+  {% endfor %}
+</ul>
+{% endblock content %}
