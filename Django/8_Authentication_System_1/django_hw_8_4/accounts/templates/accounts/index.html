@@ -1,0 +1,22 @@
+<!-- templates/accounts/index.html -->
+{% extends 'base.html' %}
+{% block title %}
+  유저 목록
+{% endblock %}
+{% block content %}
+  <p>Hello, {{ request.user.username }}</p>
+  <a href="{% url 'accounts:login' %}">[LOGIN]</a><br />
+  <form action="{% url 'accounts:logout' %}" method="post" style="display:inline;">
+    {% csrf_token %}
+    <button type="submit">LOGOUT</button>
+  </form>
+  <h1>전체 유저 목록</h1>
+  <ul>
+    {% for u in users %}
+      <li>{{ u.username }}</li>
+      <hr />
+    {% empty %}
+      <li>유저가 없습니다.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}
