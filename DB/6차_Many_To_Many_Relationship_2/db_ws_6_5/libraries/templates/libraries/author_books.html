@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>{{ author.nickname }}의 소설 목록</h1>
+  
+  <p>총 독자 수: {{ subscribers_count }}명</p>
+  
+  {% if request.user.is_authenticated %}
+    <form action="{% url 'libraries:author_subscribed' author.pk %}" method="POST">
+      {% csrf_token %}
+      {% if request.user in author.subscribed_users.all %}
+        <input type="submit" value="구독 취소">
+      {% else %}
+        <input type="submit" value="구독">
+      {% endif %}
+    </form>
+  {% endif %}
+  
+  <h3>{{ author.nickname }}이(가) 작성한 책 목록</h3>
+  <ul>
+    {% for book in books %}
+      <li>제목: {{ book.title }}</li>
+      <li>장르: {{ book.genre }}</li>
+      <hr>
+    {% empty %}
+      <p>아직 작성한 책이 없습니다.</p>
+    {% endfor %}
+  </ul>
+{% endblock content %}

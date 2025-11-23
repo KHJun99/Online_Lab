@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>반갑습니다. {{ user.username }}님!</h1>
+    
+    <form action="{% url 'accounts:logout' %}" method="POST">
+        {% csrf_token %}
+        <button type="submit">Logout</button>
+    </form>
+    
+    <a href="{% url 'stores:index' %}">[전체 직원 목록]</a>
+    <a href="{% url 'accounts:index' %}">[전체 매장 목록]</a>
+    
+    <h2>직원 전체 목록</h2>
+    <ul>
+        {% for user_item in users %}
+        <li>
+            <p>이름 : {{ user_item.username }}</p>
+            <p>admin 여부 : {{ user_item.is_superuser }}</p>
+            <p>staff 여부 : {{ user_item.is_staff }}</p>
+        </li>
+        <hr>
+        {% endfor %}
+    </ul>
+
+{% endblock content %}

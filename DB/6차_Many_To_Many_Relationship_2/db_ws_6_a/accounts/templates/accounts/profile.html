@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>{{ person.username }}님의 프로필 페이지 입니다!</h1>
+  <p>아직 이메일을 작성하지 않았습니다.</p>
+
+  {% if request.user == person %}
+    <a href="{% url 'accounts:update' %}">[USER_UPDATE]</a>
+    <form action="{% url 'accounts:delete' %}" method="POST" style="display: inline;">
+      {% csrf_token %}
+      <button type="submit">[SIGNOUT]</button>
+    </form>
+  {% endif %}
+
+  <hr>
+
+  <h2>{{ person.username }}님이 선택한 사건들</h2>
+  <ul>
+    {% for diary in person.diary_set.all %}
+      <li>
+        <a href="{% url 'diaries:detail' diary.pk %}">{{ diary.title }}</a>
+      </li>
+    {% empty %}
+      <li>사건 없는 일기</li>
+    {% endfor %}
+  </ul>
+
+  <hr>
+
+  <h2>{{ person.username }}님이 작성한 할 일 목록</h2>
+  <ul>
+    {% for todo in person.todo_set.all %}
+      <li>
+        <a href="{% url 'todos:detail' todo.pk %}">{{ todo.work }}</a>
+      </li>
+    {% empty %}
+      <li>사진 없는 일기</li>
+    {% endfor %}
+  </ul>
+{% endblock content %}

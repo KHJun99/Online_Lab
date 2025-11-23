@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Library{% endblock %}</title>
+</head>
+<body>
+  <header>
+    <a href="{% url 'libraries:index' %}">[메인 페이지]</a>
+    
+    {% if user.is_authenticated %}
+      <p>반갑습니다. {{ user.username }}님!</p>
+      
+      <a href="{% url 'libraries:profile' user.username %}">[내 프로필]</a>
+      <form action="{% url 'accounts:logout' %}" method="POST" style="display: inline;">
+        {% csrf_token %}
+        <button type="submit">Logout</button>
+      </form>
+      <form action="{% url 'accounts:delete' %}" method="POST" style="display: inline;">
+        {% csrf_token %}
+        <button type="submit">회원탈퇴</button>
+      </form>
+    {% endif %}
+    
+    <a href="{% url 'libraries:books' %}">[소설 보러 가기]</a>
+  </header>
+  
+  <hr>
+  
+  <main>
+    {% block content %}
+    {% endblock %}
+  </main>
+</body>
+</html>

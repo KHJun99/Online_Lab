@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>{{ profile_user.username }}님의 프로필</h2>
+  
+  <a href="{% url 'libraries:create_author' %}">[작가 생성하기]</a>
+  
+  <h3>{{ profile_user.username }}의 작가명 모음</h3>
+  {% if profile_user.author %}
+    <ul>
+      <li>{{ profile_user.author.nickname }}</li>
+    </ul>
+  {% else %}
+    <p>아직 작가가 아닙니다.</p>
+  {% endif %}
+  
+  <hr>
+  
+  <h3>내가 구독 중인 작가 목록</h3>
+  <ul>
+    {% for author in subscribed_authors %}
+      <li>
+        <a href="{% url 'libraries:author_detail' author.pk %}">{{ author.nickname }}</a>
+      </li>
+    {% empty %}
+      <p>아직 구독 중인 작가가 없습니다.</p>
+    {% endfor %}
+  </ul>
+{% endblock content %}

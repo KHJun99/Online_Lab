@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>전체 소설 목록</h2>
+  
+  <a href="{% url 'libraries:create_book' %}">[책 쓰러 가기]</a>
+  
+  <ul>
+    {% for book in books %}
+      <li>{{ book.title }}</li>
+      <li>{{ book.author.nickname }}</li>
+    {% empty %}
+      <p>아직 등록된 책이 없습니다.</p>
+    {% endfor %}
+  </ul>
+{% endblock %}

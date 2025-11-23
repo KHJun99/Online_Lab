@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>로그인 해 주세요.</h1>
+    <a href="{% url 'accounts:login' %}">[Login]</a>
+    <a href="{% url 'accounts:signup' %}">[Sign Up]</a>
+    
+    <h1>LOGIN Page</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">LOGIN</button>
+    </form>
+{% endblock content %}

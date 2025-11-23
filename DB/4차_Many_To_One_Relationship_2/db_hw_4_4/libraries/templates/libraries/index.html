@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  {% if user.is_authenticated %}
+    <h1>hello, {{ user.username }}</h1>
+    <form action="{% url "accounts:logout" %}" method="POST">
+      {% csrf_token %}
+      <button type="submit">로그아웃</button>
+    </form>
+  {% else %}
+    <a href="{% url "accounts:login" %}">로그인</a>
+  {% endif %}
+  <h1>책 전체 목록</h1>
+  <ul>
+    {% for book in books %}
+      <a href="{% url 'libraries:detail' book.pk %}">
+        <li>제목 : {{ book.title }}</li>
+      </a>
+      <hr>
+    {% endfor %}
+  </ul>
+{% endblock content %}
