@@ -1,0 +1,22 @@
+[
+{
+    "model": "artists.artist",
+    "pk": 1,
+    "fields": {
+        "name": "adele",
+        "agency": "XL",
+        "debut_date": "2007-10-22",
+        "is_group": false
+    }
+},
+{
+    "model": "artists.artist",
+    "pk": 2,
+    "fields": {
+        "name": "beatles",
+        "agency": "Xapple corps",
+        "debut_date": "1962-10-05",
+        "is_group": true
+    }
+}
+]
