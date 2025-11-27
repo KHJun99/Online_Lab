@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <h1>{{ title }}</h1>
+  </div>
+
+  <div id="app2">
+    <h1>{{ title }}</h1>
+  </div>
+
+  <div id="app3">
+    <h1>{{ title }}</h1>
+  </div>
+  <!-- Vue3 CDN을 사용한다. -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script>
+    const { createApp, ref } = Vue
+
+    
+    const firstApp = createApp({
+      
+      setup() {
+        
+        const title = ref('첫 번째 앱')
+        
+        return {
+          title
+        }
+      }
+    })
+    
+    firstApp.mount('#app')
+
+    const secondApp = createApp({
+      
+      setup() {
+        
+        const title = ref('두 번째 앱')
+        
+        return {
+          title
+        }
+      }
+    })
+
+    secondApp.mount('#app2')
+
+    const thirdApp = createApp({
+      
+      setup() {
+        
+        const title = ref('세 번째 앱')
+        
+        return {
+          title
+        }
+      }
+    })
+
+    thirdApp.mount('#app3')
+  </script>
+</body>
+</html>
