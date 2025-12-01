@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .text-red {
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <p class="text">Lorem ipsum dolor sit amet.</p>
+  <div id="container">
+    <p class="text">Hello world!</p>
+    <ul>
+      <li class="list-content">content1</li>
+      <li class="list-content">content2</li>
+      <li class="list-content">content3</li>
+      <li class="list-content">content4</li>
+    </ul>
+    <a href="#">hyper link</a>
+  </div>
+  <script>
+    // 아래에 코드 작성
+    // 1. Hello world! 문단을 가지는 p 태그를 선택하여 pTag 변수에 할당
+    const pTag = document.querySelector('#container .text')
+
+    // 2. pTag 클래스에 'text-red' 클래스를 추가하여 스타일을 적용
+    pTag.classList.add('text-red')
+
+    // 3. a 태그를 선택하여 aTag 변수에 할당
+    const aTag = document.querySelector('a')
+
+    // 4. aTag의 속성 href에 'http://www.google.com/'을 적용
+    aTag.setAttribute('href', 'https://www.googoe.com/')
+  </script>
+</body>
+
+</html>

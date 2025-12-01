@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .article {
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 10px;
+      margin-bottom: 10px;
+      background-color: #f9f9f9;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="container">
+  </div>
+  <script>
+    // 아래에 코드 작성
+    // 1. 실행 결과를 참고하여 동일한 구조가 될 수 있도록 코드를 작성
+
+    // container div 선택
+    const container = document.querySelector('#container')
+
+    // 2. HTML 마크업을 직접 수정핮 않음
+    // 3. JS 를 작성하여 템플릿 요소를 생성하고, 작성한 속성을 부여
+
+    // article div 생성
+    const articleDiv = document.createElement('div')
+    articleDiv.classList.add('article')
+
+    // h1 태그 생성
+    const h1 = document.createElement('h1')
+    h1.textContent = 'Article Title'
+
+    // p 태그 생성
+    const p = document.createElement('p')
+    p.style.borderTop = '1px solid black'
+    p.style.paddingTop = '10px'
+    p.textContent = 'This is a article content'
+
+    // article div에 h1과 p 추가
+    articleDiv.appendChild(h1)
+    articleDiv.appendChild(p)
+
+    // container에 article div 추가
+    container.appendChild(articleDiv)
+  </script>
+</body>
+
+</html>

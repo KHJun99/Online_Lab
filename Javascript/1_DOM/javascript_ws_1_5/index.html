@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+</head>
+<body>
+  <section>
+    <article class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      </div>
+    </article>
+    <!-- 아래에 새로운 card 생성 및 추가 -->
+  </section>
+  <script>
+    // 1. section 요소와 article 요소를 선택
+    const section = document.querySelector('section')
+    const article = document.querySelector('article')
+
+    // 2. article의 경우, 변수에 할당 시 추가로 생성할 article 요소와 구분 짓을 수 있는 변수명으로 작성
+    const existingArticle = article
+
+    // 3. 새 article 요소와 그 하위 요소를 생성
+    const newArticle = document.createElement('article')
+    
+    // 4. 하위 요소는 기존의 article과 동일하게 작성
+    // div 요소에 h5와 p 요소를 추가
+    const cardBody = document.createElement('div')
+    cardBody.classList.add('card-body')
+    
+    const cardTitle = document.createElement('h5')
+    cardTitle.classList.add('card-title')
+    cardTitle.textContent = '카드 제목'
+    
+    const cardText = document.createElement('p')
+    cardText.classList.add('card-text')
+    cardText.textContent = '카드 내용'
+    
+    // 5. div를 새로 작성한 article에 추가
+    cardBody.appendChild(cardTitle)
+    cardBody.appendChild(cardText)
+    newArticle.appendChild(cardBody)
+    
+    // 6. 새 article 요소와 하위 요소를 통해 스타일 적용을 추가
+    newArticle.classList.add('card')
+    newArticle.style.width = '18rem'
+    
+    // 7. section에 새로 작성한 article을 추가
+    section.appendChild(newArticle)
+    
+    // 8. 기존의 article 요소는 삭제
+    existingArticle.remove()
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+</body>
+</html>
