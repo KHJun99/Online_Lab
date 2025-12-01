@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    table {
+      width: 100%;
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+
+    td {
+      width: 50px;
+      height: 50px;
+      border: 1px solid black;
+      text-align: center;
+    }
+
+    .theme-color {
+      background-color: crimson;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+  <table>
+    <tr>
+      <td>Lorem, ipsum dolor.</td>
+      <td>Lorem, ipsum dolor.</td>
+      <td>Lorem, ipsum dolor.</td>
+    </tr>
+    <tr>
+      <td>Lorem, ipsum dolor.</td>
+      <td>Lorem, ipsum dolor.</td>
+      <td>Lorem, ipsum dolor.</td>
+    </tr>
+    <tr>
+      <td>Lorem, ipsum dolor.</td>
+      <td>Lorem, ipsum dolor.</td>
+      <td>Lorem, ipsum dolor.</td>
+    </tr>
+  </table>
+
+  <script>
+    // 모든 td 요소를 찾아서 theme-color 클래스 추가
+    const tdElements = document.querySelectorAll('td');
+    tdElements.forEach(td => {
+      td.classList.add('theme-color');
+    });
+
+    // table 요소에 addEventListener를 적용하고, 각 셀에서 발생한 이벤트가 버블링되어 table에 전달되면 적절한 callback Function이 작동되도록 한다
+    const table = document.querySelector('table');
+    table.addEventListener('click', (event) => {
+      // 클릭된 요소가 td인지 확인
+      if (event.target.tagName === 'TD') {
+        event.target.classList.toggle('theme-color');
+      }
+    });
+  </script>
+</body>
+
+</html>

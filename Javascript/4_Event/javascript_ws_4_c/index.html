@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .bg-color {
+      background-color: #f0f0f0;
+      padding: 20px;
+      margin: 20px;
+    }
+
+    .fs-2 {
+      font-size: 2rem;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <h2>Input</h2>
+    <input type="text" class="text-input">
+    <span class="warning" style="color: red; display: none;">글자 수를 초과하였습니다.</span>
+    <p></p>
+  </div>
+  <div>
+    <h2>Color</h2>
+    <input type="text" class="color-input">
+  </div>
+
+  <script>
+    // text-input 클래스의 input 요소
+    const textInput = document.querySelector('.text-input');
+    const p = document.querySelector('p');
+    const warning = document.querySelector('.warning');
+
+    // p 요소에 기본적으로 bg-color 클래스 추가
+    p.classList.add('bg-color');
+
+    // 작성되는 텍스트는 실시간으로 p 요소 컨텐츠에 입력된다
+    textInput.addEventListener('input', () => {
+      p.textContent = textInput.value;
+
+      // 작성하는 텍스트 길이가 5 초과라면
+      if (textInput.value.length > 5) {
+        warning.style.display = 'inline';
+        p.style.display = 'none';
+      } else {
+        warning.style.display = 'none';
+        p.style.display = 'block';
+      }
+    });
+
+    // input 요소에 focus가 집힌면
+    textInput.addEventListener('focus', () => {
+      p.classList.add('fs-2');
+    });
+
+    // input 요소에 focus가 해제되면
+    textInput.addEventListener('blur', () => {
+      p.classList.add('bg-color');
+    });
+
+    // color-input 클래스의 input 요소
+    const colorInput = document.querySelector('.color-input');
+
+    // 작성하는 텍스트가 CSS의 폰트 컬러 값으로 p 요소 컨텐츠에 실시간 반영된다
+    colorInput.addEventListener('input', () => {
+      p.style.color = colorInput.value;
+    });
+  </script>
+</body>
+
+</html>
