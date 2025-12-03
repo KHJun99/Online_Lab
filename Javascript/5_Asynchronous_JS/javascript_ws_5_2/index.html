@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    img {
+      height: 150px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Dog API</h1>
+  <img draggable="false" src="noResult.png" alt="dog">
+  <h2>아직 선택된 사진이 없습니다!</h2>
+  <br>
+  <button>Get dog</button>
+
+  <!-- axios CDN을 삽입한다. -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script>
+    const API_URI = 'https://dog.ceo/api/breeds/image/random'
+
+    function getDog () {
+      // axios를 사용하여 API_URI로 GET 요청을 보낸다.
+      axios({
+        method: 'get',
+        url: API_URI
+      })
+      // .then 메서드를 통해 요청이 성공적인 경우의 콜백함수를 정의한다.
+      .then((response) => {
+        // 성공적인 응답을 받으면, img 태그의 src를 업데이트
+        const imgTag = document.querySelector('img')
+        const h2Tag = document.querySelector('h2')
+        imgTag.src = response.data.message
+        h2Tag.style.display = 'none'
+      })
+      // .catch 메서드를 통해 요청이 실패할 경우 처리
+      .catch((error) => {
+        // 실패 시 noResult.png를 표시하고 h2 태그를 보여줌
+        const imgTag = document.querySelector('img')
+        const h2Tag = document.querySelector('h2')
+        imgTag.src = 'noResult.png'
+        h2Tag.style.display = 'block'
+      })
+    }
+
+    const button = document.querySelector('button')
+    button.addEventListener('click', getDog)
+  </script>
+</body>
+</html>
