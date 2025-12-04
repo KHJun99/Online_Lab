@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .is-selected {
+      background-color: #eee;
+    }
+
+    .is-required {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <h1>다양한 전시 정보</h1>
+    <hr>
+    <ul>
+      <li :id="exhibition.enTitle" :class="{ 'is-selected': exhibition.isSelected }">
+        <label for="selected">전시 선택</label>
+        <input type="checkbox" name="selected" id="selected" v-model="exhibition.isSelected">
+        <h3>{{ exhibition.koTitle }}</h3>
+        <p v-html="exhibition.description"></p>
+        <hr>
+        <p>{{ exhibition.artMuseum }}</p>
+        <a :href="exhibition.museumURL">전시장 바로가기</a>
+        <hr>
+        <p>입장권 구매하기</p>
+        <p>가격 : {{ exhibition.price }}</p>
+        <div>
+          <span :class="{ 'is-required': exhibition.totalNum <= 0 }">인원 수 : {{ exhibition.totalNum }} 명 </span>
+          <button @click="decreaseNum" :disabled="exhibition.totalNum <= 0">-</button>
+          <button @click="increaseNum" :disabled="exhibition.totalNum >= 10">+</button>
+        </div>
+        <hr>
+      </li>
+    </ul>
+    <p>총 입장료 : {{ totalPrice }} 원</p>
+  </div>
+
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script>
+    const { createApp } = Vue;
+
+    createApp({
+      data() {
+        return {
+          exhibition: {
+            koTitle: '모네 인사이드',
+            enTitle: 'monet-inside',
+            artMuseum: '예술의 전당',
+            museumURL: 'https://www.sac.or.kr/',
+            description: '<p> &lt;모네 인사이드&gt; 는 빛의 화가 <b>클로드 모네</b>가 남긴 소중한 명작들을 현대적 감각으로 재해석해 음악과 함께 감상하는 미디어아트 전시입니다. </p>',
+            isSelected: false,
+            price: 1000,
+            totalNum: 0
+          },
+          beforeSelectedPrice: 0,  // 전시 체크 전 누적 금액
+          afterSelectedPrice: 0    // 전시 체크 후 누적 금액
+        }
+      },
+      computed: {
+        totalPrice() {
+          return this.beforeSelectedPrice + this.afterSelectedPrice;
+        }
+      },
+      methods: {
+        decreaseNum() {
+          // 0명 초과일 때만 실행
+          if (this.exhibition.totalNum > 0) {
+            this.exhibition.totalNum--;
+            // 체크되지 않은 상태에서만 금액 감소
+            if (!this.exhibition.isSelected) {
+              this.beforeSelectedPrice -= this.exhibition.price;
+            }
+          }
+        },
+        increaseNum() {
+          // 10명 미만일 때만 실행
+          if (this.exhibition.totalNum < 10) {
+            this.exhibition.totalNum++;
+            // 체크되지 않은 상태에서만 금액 증가
+            if (!this.exhibition.isSelected) {
+              this.beforeSelectedPrice += this.exhibition.price;
+            }
+          }
+        }
+      }
+    }).mount('#app');
+  </script>
+</body>
+</html>
