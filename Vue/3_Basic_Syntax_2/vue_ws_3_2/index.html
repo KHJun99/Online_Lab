@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <div id="app">
+    <h1>다양한 전시 정보</h1>
+    <label for="isActive">전시 중인 정보만 보기</label>
+    <input type="checkbox" id="isActive" v-model="isActive">
+    <ul>
+      <li v-for="exhibition in displayedExhibitions" :key="exhibition.name">
+        <h3>{{ exhibition.name }}</h3>
+        <hr>
+        <p>전시 장소: {{ exhibition.location }}</p>
+        <p>가격: {{ exhibition.price }}</p>
+        <hr>
+      </li>
+    </ul>
+  </div>
+
+  <script>
+    const { createApp, ref, computed } = Vue
+
+    const app = createApp({
+      setup() {
+        const exhibitions = ref([
+          {
+            name: '무라카미 다카시 : 무라카시좀비',
+            location: '부산 시립 미술관',
+            price: 1000,
+            isActive: true
+          },
+          {
+            name: '마우라치오 카텔란 개인전',
+            location: '리움 미술관',
+            price: 30000,
+            isActive: true
+          },
+          {
+            name: '조선백자전',
+            location: '리움 미술관',
+            price: 30000,
+            isActive: true
+          },
+          {
+            name: '한국 실험미술 1960 - 1970',
+            location: '국립현대미술관',
+            price: 0,
+            isActive: true
+          },
+          {
+            name: '에드워드 호퍼 : 길 위에서',
+            location: '서울 시립 미술관',
+            price: 1000,
+            isActive: false
+          },
+          {
+            name: '알렉산더 칼더 x 이우환',
+            location: '국제갤러리 서울점',
+            price: 15000,
+            isActive: false
+          }
+        ])
+
+        const isActive = ref(false)
+
+        const isActiveExhibition = computed(() => {
+          return exhibitions.value.filter(exhibition => exhibition.isActive === true)
+        })
+
+        const displayedExhibitions = computed(() => {
+          if (isActive.value) {
+            return isActiveExhibition.value
+          } else {
+            return exhibitions.value
+          }
+        })
+
+        return {
+          exhibitions,
+          isActive,
+          isActiveExhibition,
+          displayedExhibitions
+        }
+      }
+    })
+
+    app.mount('#app')
+  </script>
+</body>
+</html>
